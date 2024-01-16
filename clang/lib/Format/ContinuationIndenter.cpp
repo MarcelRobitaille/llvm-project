@@ -842,6 +842,7 @@ void ContinuationIndenter::addTokenOnCurrentLine(LineState &State, bool DryRun,
     bool BreakBeforeOperator =
         P->MustBreakBefore || P->is(tok::lessless) ||
         (P->is(TT_BinaryOperator) &&
+         P->isOneOf(tok::ampamp, tok::pipepipe) &&
          Style.BreakBeforeBinaryOperators != FormatStyle::BOS_None) ||
         (P->is(TT_ConditionalExpr) && Style.BreakBeforeTernaryOperators);
     // Don't do this if there are only two operands. In these cases, there is
