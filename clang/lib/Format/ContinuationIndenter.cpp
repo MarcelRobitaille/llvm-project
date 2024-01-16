@@ -2373,6 +2373,9 @@ ContinuationIndenter::breakProtrudingToken(const FormatToken &Current,
     // We don't insert backslashes when breaking line comments.
     ColumnLimit = Style.ColumnLimit;
   }
+  if ((0 != Style.CommentColumnLimit) && (Current.is(TT_LineComment) || Current.is(TT_BlockComment))) {
+     ColumnLimit = Style.CommentColumnLimit;
+  }
   if (ColumnLimit == 0) {
     // To make the rest of the function easier set the column limit to the
     // maximum, if there should be no limit.

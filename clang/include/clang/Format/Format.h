@@ -2192,6 +2192,8 @@ struct FormatStyle {
   /// \version 3.7
   unsigned ColumnLimit;
 
+  unsigned CommentColumnLimit;
+
   /// A regular expression that describes comments with special meaning,
   /// which should not be split into lines or otherwise changed.
   /// \code
