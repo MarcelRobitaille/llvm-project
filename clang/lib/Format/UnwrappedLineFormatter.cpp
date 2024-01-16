@@ -1510,6 +1510,11 @@ static auto computeNewlines(const AnnotatedLine &Line,
     }
   }
 
+  // Add newline before if
+  if (PreviousLine && RootToken.isOneOf(tok::kw_if, tok::kw_for, tok::kw_while, tok::kw_do, tok::kw_switch)) {
+     Newlines = PreviousLine->isComment() ? 1 : 2;
+  }
+
   // Insert or remove empty line after access specifiers.
   if (PreviousLine && PreviousLine->First->isAccessSpecifier() &&
       (!PreviousLine->InPPDirective || !RootToken.HasUnescapedNewline)) {
